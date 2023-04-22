@@ -43,16 +43,16 @@ if __name__ == '__main__':
     # logging.basicConfig(level=logging.DEBUG)
     # logging.basicConfig(level=logging.WARNING)
     logging.basicConfig(level=logging.ERROR)  # pick your poison
-    easy = ["gemakkelijk", {"Resistor": 1, "Diode": 1, "Zener": 0}, {"Resistor": 3, "Diode": 2, "Zener": 1}]
+    easy = ["easy", {"Resistor": 1, "Diode": 1, "Zener": 0}, {"Resistor": 3, "Diode": 2, "Zener": 1}]
     medium = ["medium", {"Resistor": 2, "Diode": 1, "Zener": 0}, {"Resistor": 5, "Diode": 3, "Zener": 2}]
-    hard = ["moeilijk", {"Resistor": 3, "Diode": 2, "Zener": 1}, {"Resistor": 7, "Diode": 5, "Zener": 4}]
+    hard = ["hard", {"Resistor": 3, "Diode": 2, "Zener": 1}, {"Resistor": 7, "Diode": 5, "Zener": 4}]
     for level_name, *params in (easy, medium, hard):
         images, solution_images = [], []
-        text = f"Niveau: {level_name}.\n   " + \
+        text = f"Level: {level_name}.\n   " + \
                '\n   '.join(f"{params[0][comp]} <= {comp}s <= {params[1][comp]}"for comp in hard[-1].keys())
         this_img, this_sol_img = make_exercise_set(50, *params, number=True, add_text=text,
                                                    include_solutions=True, include_seed=True)
         images.extend(this_img)
         solution_images.extend(this_sol_img)
         make_pdf(images + [solution_interpage] + solution_images,
-                 file_name=f"oefeningen_{level_name}.pdf", path="/home/thomas/Documents")
+                 file_name=f"Exercises_{level_name}.pdf")

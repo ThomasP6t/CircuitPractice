@@ -9,6 +9,7 @@ from PIL import Image, ImageDraw
 from circuit_parts import Node, Metagraph
 from utils import pprint_value, get_divisors, make_col_image, name_font, standard_width, CircuitState
 
+
 class Circuit:
     def __init__(self, circuitstate=None, **kwargs):
         if circuitstate is None:
